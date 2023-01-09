@@ -4,10 +4,13 @@ services:
     image: akhilrex/hammond
     container_name: hammond
     environment:
-      - JWT_SECRET=somethingverystrong
+      - JWT_SECRET=${JWT_SECRET}
     volumes:
-      - /path/to/config:/config
-      - /path/to/data:/assets
+      - hammond_config:/config
+      - hammond_assets:/assets
     ports:
-      - 3000:3000
+      - 3001:3000
     restart: unless-stopped
+volumes:
+  hammond_config:
+  hammond_assets:
